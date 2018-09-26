@@ -94,6 +94,10 @@ function restau_lite_setup() {
 	// Styles for TinyMCE
 	$font_url = str_replace( ',', '%2C', '//fonts.googleapis.com/css?family=Montserrat:300,400,700' );
     add_editor_style( array( 'css/editor-style.css', 'css/bootstrap.css', $font_url )  );
+
+    add_theme_support( 'starter-content', [
+    	// Starter content defined here
+    ] );
 	
 }
 endif; // restau_lite_setup
@@ -130,18 +134,6 @@ add_action( 'widgets_init', 'restau_lite_widgets_init' );
 
 
 /**
- * Register widgets.
- *
- * @link https://codex.wordpress.org/Widgets_API
- */
-function restau_lite_widgets_register() {
-
-}
-add_action( 'widgets_init', 'restau_lite_widgets_register' );
-
-
-
-/**
  * Enqueue scripts and styles.
  */
 function restau_lite_scripts() {
@@ -174,8 +166,11 @@ require get_template_directory() . '/inc/scripts/styles.php';
  * Enqueue styles to the Admin Panel.
  */
 function restau_lite_wp_admin_style() {
+	$restau_lite_current_screen = get_current_screen();
+	if ( is_customize_preview() || 'appearance_page_restau_lite_theme-info' == $restau_lite_current_screen->id ) {
         wp_register_style( 'restau_lite_custom_wp_admin_css', get_template_directory_uri() . '/css/admin-styles.css', false, '1.0.0' );
         wp_enqueue_style( 'restau_lite_custom_wp_admin_css' );
+    }
 }
 add_action( 'admin_enqueue_scripts', 'restau_lite_wp_admin_style' );
 
@@ -234,14 +229,3 @@ require get_template_directory() . '/inc/jetpack.php';
 
 	// Theme Info Page
 	require get_template_directory() . '/inc/theme-functions/theme-info-page.php';
-
-
-
-/**
- * Redirect after theme installation
- *
- */
-function restau_lite_theme_redirect () {
-	wp_redirect( admin_url( 'themes.php?page=restau_lite_theme-info' ) );
-}
-add_action( 'after_switch_theme', 'restau_lite_theme_redirect' );

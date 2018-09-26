@@ -27,7 +27,7 @@
     <?php
     $header_image = 'style="background-image: url(' . get_template_directory_uri() . '/images/background.jpg' . ');"';
     if ( get_header_image() ){
-        $header_image = 'style="background-image: url(' . get_header_image() . ');"';
+        $header_image = 'style="background-image: url(' . esc_url( get_header_image() ) . ');"';
     }
     ?>
     <div class="top-page-container with-image" <?php echo $header_image; ?>>
@@ -70,8 +70,8 @@
                                     'menu_id' => 'primary-menu',
                                     'depth'             => 3,
                                     'menu_class'        => 'nav',
-                                    'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-                                    'walker'            => new wp_bootstrap_navwalker()
+                                    'fallback_cb'       => 'restau_lite_bootstrap_navwalker::fallback',
+                                    'walker'            => new restau_lite_bootstrap_navwalker()
                                 ));
                                 ?>
                             </nav>

@@ -34,7 +34,7 @@ if ( empty( $restau_lite_bottom_image ) ) {
 
                 <div class="col-md-5">
                     <p>
-                    <?php esc_html_e( '&copy;', 'restau-lite' ); echo ' ' . date('Y') . ' ' . get_bloginfo( 'name' );  ?>.
+                    <?php esc_html_e( '&copy;', 'restau-lite' ); echo ' ' . date_i18n( esc_html__( 'Y', 'restau-lite' ) ) . ' ' . get_bloginfo( 'name' );  ?>.
                     <?php printf( esc_html__( 'Designed by %s.', 'restau-lite' ), '<a href="https://www.quemalabs.com/" rel="designer">Quema Labs</a>' ); ?>
                     </p>
                 </div>

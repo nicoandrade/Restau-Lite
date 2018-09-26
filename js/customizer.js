@@ -2,10 +2,8 @@ jQuery(window).load(function (){
 	( function( $ ) {
 
 		//Scroll to section
-		$('body').on('click', '#accordion-panel-restau_lite_front_page_sections .control-subsection .accordion-section-title', function(event) {
-			if ( !$(this).parent('.control-subsection').hasClass('open') ) {
-				return false;
-			};
+		$('body').on('click', '#sub-accordion-panel-restau_lite_front_page_sections .control-subsection .accordion-section-title', function(event) {
+
 			var section_id = $(this).parent('.control-subsection').attr('id');
 			scrollToSection( section_id );
 			

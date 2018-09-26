@@ -64,7 +64,7 @@ function quemalabs_getting_started_page() {
 
 			<div class="theme-docuementation">
 				<div class="help-msg-wrap">
-					<div class="help-msg"><?php echo sprintf( esc_html__( 'You can find this documentation and more at our %sHelp Center%s.', 'restau-lite' ), '<a href="https://www.quemalabs.com/help-center/" target="_blank">', '</a>' ); ?></div>
+					<div class="help-msg"><?php echo sprintf( esc_html__( 'You can find this documentation and more at our %1$sHelp Center%2$s.', 'restau-lite' ), '<a href="https://www.quemalabs.com/help-center/" target="_blank">', '</a>' ); ?></div>
 				</div>
 				<?php
 				$url = wp_nonce_url( 'themes.php?page=restau_lite_theme-info', 'more-themes' );

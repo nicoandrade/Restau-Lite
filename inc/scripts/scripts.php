@@ -1,6 +1,4 @@
 <?php
-
-	wp_enqueue_script( 'jquery' );
 	
 	//HTML5 Shiv ==============================================
 	wp_enqueue_script( 'restau_lite_html5shiv', get_template_directory_uri() . '/js/html5shiv.js', array(), '3.7.3', true );

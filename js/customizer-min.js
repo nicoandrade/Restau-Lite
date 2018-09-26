@@ -1,1 +1,56 @@
-jQuery(window).load(function(){!function($){function e(e){var o="welcome-section",t=$("#customize-preview iframe").contents();switch(e){case"accordion-section-welcome":o="welcome-section";break;case"accordion-section-restau_lite_about_section":o="about-us-section";break;case"accordion-section-restau_lite_gallery_section":o="gallery-section";break;case"accordion-section-restau_lite_reservation_section":o="reservation-section";break;case"accordion-section-restau_lite_menu_section":o="menu-section";break;case"accordion-section-restau_lite_blog_section":o="blog-section";break;case"accordion-section-restau_lite_testimonials_section":o="testimonials-section"}t.find("html, body").animate({scrollTop:t.find("."+o).offset().top-30},1e3)}$("body").on("click","#accordion-panel-restau_lite_front_page_sections .control-subsection .accordion-section-title",function(o){if(!$(this).parent(".control-subsection").hasClass("open"))return!1;var t=$(this).parent(".control-subsection").attr("id");e(t)}),$("body").on("click","a[data-section]",function(e){wp.customize.section($(this).attr("data-section")).focus()})}(jQuery)});
+jQuery(window).load(function (){
+	( function( $ ) {
+
+		//Scroll to section
+		$('body').on('click', '#sub-accordion-panel-restau_lite_front_page_sections .control-subsection .accordion-section-title', function(event) {
+
+			var section_id = $(this).parent('.control-subsection').attr('id');
+			scrollToSection( section_id );
+			
+		});
+
+		function scrollToSection( section_id ){
+			var section_class = "welcome-section";
+			var $contents = $('#customize-preview iframe').contents();
+			switch ( section_id ) {
+				case 'accordion-section-welcome':
+			        section_class = "welcome-section";
+			        break;
+			    case 'accordion-section-restau_lite_about_section':
+			        section_class = "about-us-section";
+			        break;
+			    case 'accordion-section-restau_lite_gallery_section':
+			        section_class = "gallery-section";
+			        break;
+			    case 'accordion-section-restau_lite_reservation_section':
+			        section_class = "reservation-section";
+			        break;
+			    case 'accordion-section-restau_lite_menu_section':
+			        section_class = "menu-section";
+			        break;
+			    case 'accordion-section-restau_lite_blog_section':
+			        section_class = "blog-section";
+			        break;
+			    case 'accordion-section-restau_lite_testimonials_section':
+			        section_class = "testimonials-section";
+			        break;
+			}
+			$contents.find("html, body").animate({
+		    	scrollTop: $contents.find( "." + section_class ).offset().top - 30
+		    }, 1000);
+
+		}
+
+
+
+		/*
+		 * Links to different sections in the Customizer
+		 * Just create a link like this: <a href="#" data-section="section-id">link</a>
+		 */
+		$('body').on('click', 'a[data-section]', function(event) {
+			wp.customize.section( $(this).attr( 'data-section' ) ).focus();
+		});
+
+	} )( jQuery );
+});
+

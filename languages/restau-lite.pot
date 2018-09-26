@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Restau Lite\n"
-"POT-Creation-Date: 2016-12-13 18:51-0300\n"
-"PO-Revision-Date: 2016-12-13 18:51-0300\n"
+"POT-Creation-Date: 2017-03-21 13:38-0300\n"
+"PO-Revision-Date: 2017-03-21 13:38-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -81,6 +81,10 @@ msgstr ""
 
 #: footer.php:37
 msgid "&copy;"
+msgstr ""
+
+#: footer.php:37
+msgid "Y"
 msgstr ""
 
 #: footer.php:38
@@ -274,7 +278,7 @@ msgstr ""
 
 #: inc/customizer.php:356
 #, php-format
-msgid "Check out the PRO version for more features. %s View PRO version %s"
+msgid "Check out the PRO version for more features. %1$s View PRO version %2$s"
 msgstr ""
 
 #: inc/extras.php:92
@@ -770,7 +774,7 @@ msgstr ""
 
 #: inc/theme-functions/theme-info-page.php:67
 #, php-format
-msgid "You can find this documentation and more at our %sHelp Center%s."
+msgid "You can find this documentation and more at our %1$sHelp Center%2$s."
 msgstr ""
 
 #: inc/theme-functions/wp_bootstrap_navwalker.php:197
@@ -835,16 +839,6 @@ msgstr ""
 
 #: template-parts/section-menu.php:80
 msgid "$"
-msgstr ""
-
-#: template-parts/section-testimonials.php:37
-msgid ""
-"\"We have been to Restau Lite many times over the years. We know what to "
-"expect: great food and great prices. I suggest checking them out.\""
-msgstr ""
-
-#: template-parts/section-testimonials.php:42
-msgid "John Smith <span>TripAdvisor</span>"
 msgstr ""
 
 #. Theme Name of the plugin/theme

@@ -18,7 +18,7 @@ function restau_lite_body_classes( $classes ) {
     $restau_lite_theme_data = wp_get_theme();
 
     $classes[] = sanitize_title( $restau_lite_theme_data['Name'] );
-    $classes[] = 'v' . $restau_lite_theme_data['Version'];
+    $classes[] = 'ver-' . $restau_lite_theme_data['Version'];
 
     $restau_lite_general_options_animations = get_theme_mod( 'restau_lite_general_options_animations', '1' );
     if ( '1' == $restau_lite_general_options_animations ) {
@@ -123,6 +123,7 @@ if ( ! function_exists( 'restau_lite_get_food_menus' ) ){
                     $food_dring_menus[get_the_id()] = get_the_title();
                 endwhile;            
             endif;
+            wp_reset_postdata();
             return $food_dring_menus;
         }
     }
@@ -135,7 +136,7 @@ if ( ! function_exists( 'restau_lite_get_food_menus' ) ){
  */
 function restau_lite_gallery_shortcode_photoswipe( $output = '', $atts, $instance ) {
 
-    if ( $atts['link'] == 'file') {
+    if ( $atts['link'] == 'file' && ! is_admin() ) {
         $attachment_ids = explode(",", $atts['ids'] );
         $attach_count = count( $attachment_ids );
         echo '<script type="text/javascript">';

@@ -30,20 +30,6 @@ if ( $restau_lite_enable_section || is_customize_preview() ) :
 
             }//while
 
-        }else{// if have posts
-
-            for ( $k = 0 ; $k < 3; $k++ ){
-                echo '<div class="testimonial"><blockquote cite="John">';
-                echo esc_html__( '"We have been to Restau Lite many times over the years. We know what to expect: great food and great prices. I suggest checking them out."', 'restau-lite' );
-                echo '</blockquote>';
-                $wp_kses_args = array(
-                    'span' => array(),
-                );
-                $testimonial_cite = wp_kses( __( 'John Smith <span>TripAdvisor</span>', 'restau-lite' ), $wp_kses_args );
-                echo '<p class="testimonial-cite">' . $testimonial_cite . '</p>';
-                echo '</div>';
-            }
-
         }
         wp_reset_postdata();
         ?>

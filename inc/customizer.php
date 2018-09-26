@@ -353,7 +353,7 @@ function restau_lite_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'restau_lite_probtn', array( 'default' => '', 'sanitize_callback' => 'restau_lite_sanitize_text', ) );
 	$wp_customize->add_control( new restau_lite_Display_Text_Control( $wp_customize, 'restau_lite_probtn', array(
 		'section' => 'restau_lite_pro_section', // Required, core or custom.
-		'label' => sprintf( __( 'Check out the PRO version for more features. %s View PRO version %s', 'restau-lite' ), '<a target="_blank" class="button" href="https://www.quemalabs.com/theme/restau/" style="width: 80%; margin: 10px auto; display: block; text-align: center;">', '</a>' ),
+		'label' => sprintf( __( 'Check out the PRO version for more features. %1$s View PRO version %2$s', 'restau-lite' ), '<a target="_blank" class="button" href="https://www.quemalabs.com/theme/restau/" style="width: 80%; margin: 10px auto; display: block; text-align: center;">', '</a>' ),
 	) ) );
 
 
@@ -385,8 +385,8 @@ add_action( 'customize_register', 'restau_lite_customize_register' );
 function restau_lite_customize_preview_js() {
 	
 	wp_register_script( 'restau_lite_customizer_preview', get_template_directory_uri() . '/js/customizer-preview.js', array( 'customize-preview' ), '20151024', true );
-	wp_localize_script( 'restau_lite_customizer_preview', 'wp_customizer', array(
-		'ajax_url' => admin_url( 'admin-ajax.php' ),
+	wp_localize_script( 'restau_lite_customizer_preview', 'restau_lite_wp_customizer', array(
+		'ajax_url' => esc_url( admin_url( 'admin-ajax.php' ) ),
 		'theme_url' => get_template_directory_uri(),
 		'site_name' => get_bloginfo( 'name' )
 	));
@@ -406,8 +406,8 @@ function restau_lite_customize_js() {
 	wp_enqueue_script( 'jquery-ui-sortable' );
 	
 	wp_register_script( 'restau_lite_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-controls', 'jquery', 'jquery-ui-core', 'jquery-ui-sortable' ), '20151024', true );
-	wp_localize_script( 'restau_lite_customizer', 'wp_customizer_admin', array(
-		'ajax_url' => admin_url( 'admin-ajax.php' ),
+	wp_localize_script( 'restau_lite_customizer', 'restau_lite_wp_customizer_admin', array(
+		'ajax_url' => esc_url( admin_url( 'admin-ajax.php' ) ),
 		'theme_url' => get_template_directory_uri(),
 		'admin_url' => get_admin_url()
 	));
@@ -567,22 +567,5 @@ function restau_lite_get_image_src() {
 	$image = wp_get_attachment_image_src( absint( $image_id ), 'full' );
 	$image = $image[0];
 	echo $image;
-	die();
-}
-
-/*
-* AJAX call to save the order for Front Page Sections
-*/
-add_action( 'wp_ajax_nopriv_restau_lite_save_sortable', 'restau_lite_save_sortable' );
-add_action( 'wp_ajax_restau_lite_save_sortable', 'restau_lite_save_sortable' );
-
-function restau_lite_save_sortable() {
-	$items = $_POST['items'];
-	if ( is_array( $items ) ) {
-		update_option( 'restau_lite_sortable_items', $items );
-		wp_send_json_success();
-	}else{
-		wp_send_json_error();
-	}
 	die();
 }
